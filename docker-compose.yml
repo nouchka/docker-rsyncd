@@ -1,0 +1,14 @@
+version: '2'
+services:
+  rsyncd:
+    image: nouchka/rsyncd
+    container_name: "rsyncd"
+    entrypoint: /sync.sh
+    ports:
+      - "873:873"
+    volumes:
+      - rsyncd-data:/datas
+      - ./sync/:/sync/
+volumes:
+  rsyncd-data:
+    driver: local
