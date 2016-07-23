@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER Jean-Avit Promis "docker@katagena.com"
 
 RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get -yq install rsync wget && \
+	DEBIAN_FRONTEND=noninteractive apt-get -yq install rsync wget openssh-client && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 	sed -i "s/RSYNC_ENABLE=false/RSYNC_ENABLE=true/" /etc/default/rsync
 
@@ -17,6 +17,8 @@ RUN chmod +x /sync.sh
 
 ADD init.sh /init.sh
 RUN chmod +x /init.sh
+
+RUN mkdir /root/ssh/
 
 VOLUME /datas /sync
 EXPOSE 873
