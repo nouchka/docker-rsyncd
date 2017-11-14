@@ -1,6 +1,8 @@
 version: '2'
+
 services:
   rsyncd:
+    build: .
     image: nouchka/rsyncd
     container_name: "rsyncd"
     entrypoint: /sync.sh
