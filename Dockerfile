@@ -2,7 +2,7 @@ FROM debian:stable-slim
 MAINTAINER Jean-Avit Promis "docker@katagena.com"
 
 RUN apt-get update && \
-	DEBIAN_FRONTEND=noninteractive apt-get -yq install rsync wget openssh-client cron && \
+	DEBIAN_FRONTEND=noninteractive apt-get -yq install rsync wget openssh-client cron procps && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 	sed -i "s/RSYNC_ENABLE=false/RSYNC_ENABLE=true/" /etc/default/rsync
 
